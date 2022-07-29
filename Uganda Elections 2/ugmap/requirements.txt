@@ -1,3 +1,0 @@
-d3.v3.min.js
-skeleton.min.css
-mustache.min.js
