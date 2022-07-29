@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>2021 Uganda Elections</title>
+    	<link href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css">
+		<link href="ugmap/style.css" rel="stylesheet" type="text/css" >
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<style>
+		body {font-family: Arial, Helvetica, sans-serif;}
+		
+		.navbar {
+		  width: 100%;
+		  background-color: #555;
+		  overflow: auto;
+		}
+		
+		.navbar a {
+		  float: left;
+		  padding: 12px;
+		  color: white;
+		  text-decoration: none;
+		  font-size: 17px;
+		}
+		
+		.navbar a:hover {
+		  background-color: #000;
+		}
+		
+		.active {
+		  background-color: #04AA6D;
+		}
+		
+		@media screen and (max-width: 500px) {
+		  .navbar a {
+			float: none;
+			display: block;
+		  }
+		}
+		</style>
+	<body>
+
+		<div class="navbar">
+			<a class="active" href="index.html"><i class="fa fa-fw fa-home"></i> Electoral Map</a> 
+			<a href="viz.html"><i class="fa fa-fw fa-chart-line"></i> BarChart and HeatMap</a> 
+			<a href="piechart.html">Pie Chart</a>
+		</div>
+		  
+		<div class="container">
+			<h4>2021 Uganda Presidential Election District Valid Votes</h4>
+			<b><p>Instructions</p></b>
+			<ol>
+				<li>Hover over a district to display the total valid votes.</li>
+				<li>Click on a district to display total votes per candidates.</li>
+				<!-- <li>The legend shows the color distribution correlating to the voter count per district</li> -->
+			  </ol>
+			<div id="initial">
+			
+			</div>		
+
+			<div id="map"> <!-- Map container --> </div>
+
+			<div id="details"><!-- Details container --></div>
+
+			<div id="legend"><!-- Legend container --></div>
+
+		</div> 
+		
+		<div id="footer">
+				<strong>Data sources</strong>: Data from EC Uganda.
+			</div>
+
+		<!-- Mustache template, rendered later to show the details of a feature -->
+	    <script id="template" type="x-tmpl-mustache">
+	      <h3 >{{ district }}</h3>
+	      <table>
+	        <tr>
+	          <th> Total Valid Votes:</th>
+	          <td>{{ ValidVotes }} </td>
+	        </tr>
+	        <tr>
+	          <th> AMURIAT  FDC:</th>
+	          <td>{{ AMURIAT}} </td>
+	        </tr>
+	        <tr>
+	          <th> KABULETA:</th>
+	          <td>{{ KABULETA }} </td>
+	        </tr>
+	       	<tr>
+	          <th> NANCY KALEMBE:</th>
+	          <td>{{ KALEMBE }} </td>
+	        </tr>
+	        <tr>
+	          <th> KATUMBA:</th>
+	          <td>{{ KATUMBA }} </td>
+	        </tr>
+	        <tr>
+	          <th> KYAGULANYI:</th>
+	          <td>{{ KYAGULANYI }} </td>
+	        </tr>
+	        <tr>
+	          <th> MAO:</th>
+	          <td>{{ MAO }} </td>
+	        </tr>
+	        <tr>
+	          <th> MAYAMBALA:</th>
+	          <td>{{ MAYAMBALA }} </td>
+	        </tr>
+	        <tr>
+	          <th> MUNTU:</th>
+	          <td>{{ MUNTU }} </td>
+	        </tr>
+	        <tr>
+	          <th> MWESIGYE:</th>
+	          <td>{{ MWESIGYE }} </td>
+	        </tr>
+	        <tr>
+	          <th> TUMUKUNDE:</th>
+	          <td>{{ TUMUKUNDE }} </td>
+	        </tr>
+			<tr>
+				<th> TIBUHABURWA:</th>
+				<td>{{ TIBUHABURWA }} </td>
+			  </tr>
+	      </table>	      
+	    </script>
+
+
+		<!-- Tooltip div -->
+		<div id="tooltip">
+		<p class="name"></p>
+		<p class="value"></p>
+		</div>
+
+
+		<!-- JS Libraries -->
+		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+		<script src="/ugmap/map.js"></script>
+		<script src="/ugmap/legend.js"></script>
+	</body>
+</html>
